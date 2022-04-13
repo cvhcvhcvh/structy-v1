@@ -1,17 +1,32 @@
+// class Node {
+//   constructor(val) {
+//     this.val = val;
+//     this.left = null;
+//     this.right = null;
+//   }
+// }
 
 const pathFinder = (root, target) => {
-  if (root === null) return null;
-  if (root.val === target) return [root.val];
-
-  const leftPath = pathFinder(root.left, target);
-  const rightPath = pathFinder(root.right, target);
-
-  if (leftPath !== null) {
-    return [root.val, ...leftPath]
-  }
-  if (rightPath !== null) {
-    return [root.val, ...rightPath];
+  const result = pathFinderHelper(root, target);
+  if (result !== null) {
+    return result.reverse();
   }
   return null;
 };
-console.log(pathFinder(a, "e"));
+
+const pathFinderHelper = (root, target) => {
+  if (root === null) return null;
+  if (root.val === target) return [root.val];
+
+  const leftPath = pathFinderHelper(root.left, target);
+  if (leftPath !== null) {
+    leftPath.push(root.val);
+    return leftPath;
+  }
+  const rightPath = pathFinderHelper(root.right, target);
+  if (rightPath !== null) {
+    rightPath.push(root.val);
+    return rightPath;
+  }
+  return null;
+};
