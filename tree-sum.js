@@ -1,3 +1,11 @@
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
@@ -12,7 +20,7 @@ b.right = e;
 c.right = f;
 
 const treeSum = (root) => {
-  if (root === null) return 0
+  if (root === null) return 0;
   let sum = 0;
   const stack = [root];
 
