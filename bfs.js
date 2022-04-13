@@ -19,19 +19,18 @@ b.left = d;
 b.right = e;
 c.right = f;
 
-const dfs = (root) => { // a
+const bfs = (root) => {
   if (root === null) return [];
   const res = [];
-  const stack = [root]; // [a]
+  const queue = [root];
 
-  while (stack.length > 0) { // []
-    let current = stack.pop(); //  f
-    res.push(current.val); // [a, b, d, e, c, f]
+  while (queue.length > 0) {
+    let current = queue.shift();
+    res.push(current.val);
 
-    if (current.right) stack.push(current.right); // [f]
-    if (current.left) stack.push(current.left); // []
+    if (current.left) queue.push(current.left);
+    if (current.right) queue.push(current.right);
   }
+
   return res;
 };
-
-dfs(a);
