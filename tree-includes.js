@@ -1,3 +1,11 @@
+class Node {
+  constructor(val) {
+    this.val = val;
+    this.left = null;
+    this.right = null;
+  }
+}
+
 const a = new Node(3);
 const b = new Node(11);
 const c = new Node(4);
@@ -17,7 +25,7 @@ const treeIncludes = (root, target) => {
 
   while (stack.length > 0) {
     let current = stack.pop();
-    if (current.val === target) return true
+    if (current.val === target) return true;
 
     if (current.right) stack.push(current.right);
     if (current.left) stack.push(current.left);
